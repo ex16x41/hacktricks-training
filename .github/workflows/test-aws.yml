@@ -16,16 +16,17 @@ jobs:
   aws:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v3
+
       - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
+        uses: aws-actions/configure-aws-credentials@v3
         with:
           aws-region: eu-west-1
           role-to-assume: ${{ secrets.READ_ROLE }}
           role-session-name: OIDCSession
 
-        - name: List Secrets from AWS Secrets Manager
+      - name: List Secrets from AWS Secrets Manager
         run: |
           echo "Listing all secrets..."
           aws secretsmanager list-secrets --query 'SecretList[*].Name' --output table
