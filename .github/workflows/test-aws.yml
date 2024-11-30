@@ -26,7 +26,7 @@ jobs:
           role-to-assume: ${{ secrets.READ_ROLE }}
           role-session-name: OIDCSession
 
-     - name: Fetch Secrets from AWS Secrets Manager
+        - name: List Secrets from AWS Secrets Manager
         run: |
-          echo "Fetching secrets..."
-          aws secretsmanager get-secret-value --secret-id <YOUR_SECRET_NAME> --query SecretString --output text
+          echo "Listing all secrets..."
+          aws secretsmanager list-secrets --query 'SecretList[*].Name' --output table
