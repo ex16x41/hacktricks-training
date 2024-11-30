@@ -1,16 +1,17 @@
-name: 'test AWS Access'
- 
-# The workflow should only trigger on pull requests to the main branch
+name: Test AWS Access
+
 on:
   push:
     branches:
       - main
- 
-# Required to get the ID Token that will be used for OIDC
+  pull_request:
+    branches:
+      - main
+
 permissions:
   id-token: write
-  contents: read # needed for private repos to checkout
- 
+  contents: read
+
 jobs:
   aws:
     runs-on: ubuntu-latest
@@ -24,6 +25,7 @@ jobs:
           aws-region: eu-east-1
           role-to-assume: ${{ secrets.READ_ROLE }}
           role-session-name: OIDCSession
- 
-      - run: aws sts get-caller-identity
-        shell: bash
+
+      - name: Test AWS CLI
+        run: |
+          aws sts get-caller-identity
