@@ -22,7 +22,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-region: eu-east-1
-          role-to-assume: ${{ GithubActionRoleARN }}
+          role-to-assume: ${{ secrets.READ_ROLE }}
           role-session-name: OIDCSession
  
       - run: aws sts get-caller-identity
