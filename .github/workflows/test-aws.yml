@@ -1,4 +1,4 @@
-name: Test AWS Access
+name: Fetch Secrets from AWS Secrets Manager
 
 on:
   push:
@@ -26,6 +26,7 @@ jobs:
           role-to-assume: ${{ secrets.READ_ROLE }}
           role-session-name: OIDCSession
 
-      - name: Test AWS CLI
+     - name: Fetch Secrets from AWS Secrets Manager
         run: |
-          aws sts get-caller-identity
+          echo "Fetching secrets..."
+          aws secretsmanager get-secret-value --secret-id <YOUR_SECRET_NAME> --query SecretString --output text
