@@ -1,5 +1,6 @@
-name: 'test AWS Access'
- 
+name: "Configure AWS Credentials" Action for GitHub Actions
+uses: aws-actions/configure-aws-credentials@v4.0.2
+            
 # The workflow should only trigger on pull requests to the main branch
 on:
   pull_request:
