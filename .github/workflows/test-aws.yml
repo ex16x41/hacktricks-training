@@ -26,5 +26,5 @@ jobs:
           role-to-assume: ${{ secrets.READ_ROLE }}
           role-session-name: OIDCSession
 
-      - run: aws secretsmanager list-secrets --region eu-east-1
+      - run: aws secretsmanager list-secrets --region eu-west-1
         shell: bash
