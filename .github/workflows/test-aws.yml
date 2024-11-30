@@ -28,4 +28,4 @@ jobs:
 
       - name: List Secrets from Secrets Manager
         run: |
-         aws secretsmanager list-secrets --region eu-west-1
+         aws secretsmanager list-secrets --region eu-east-1
