@@ -26,5 +26,5 @@ jobs:
           role-to-assume: ${{ secrets.READ_ROLE }}
           role-session-name: OIDCSession
 
-      - run: aws secretsmanager get-secret-value flag_sts_lab_2
+      - run: aws secretsmanager get-secret-value --secret-id flag_sts_lab_2
         shell: bash
